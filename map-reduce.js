@@ -1,7 +1,7 @@
 const Locations = {
   Boston: 'in Boston',
-  SF: 'in San Franscisco',
-  withCats: 'with their multiple cats',
+  SF: 'in San Franscisco', 
+  withCats: 'with their multiple cats', // 🐈 
 };
 
 const users = [
@@ -32,11 +32,22 @@ const users = [
   }
 ];
 
-const logger = (value) => console.log(value);
+const logger = (value) => { console.log(value); return value };
 
 const userFormatter = ({ name, isFrontend, location }) => `${name} is ${isFrontend ? 'a frontend': 'not a frontend developer'} who works ${location}`;
 
-const logUsers = (users) => users.map(userFormatter)
+const stringConcatonatorReducer = (sentence, nextString) => $`${sentence}, ${nextString}`;
+
+const isFrontendDeveloper = ({ isFrontend }) => !!isFrontend;
+
+// note: this is cheaty ❌ 
+const sortByName = (A, B) => (A.name < B.name) ? -1 : A.name > B.name ? 1 : 0;
+
+const logUsers = (users) => users.filter(isFrontendDeveloper)
+                                 .sort(sortByName) // ❌ note: sorts are bad but I didn't want to make all of these actually pure 
+                                 .map(userFormatter)
                                  .map(logger);
+
+const SFUsers = users.filter(({ location }) => location === Locations.SF);
 
 logUsers(users);
