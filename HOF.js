@@ -16,5 +16,4 @@ const expensiveFunction = (iterations) => {
 const timedExpensiveFunction = timerHOF(expensiveFunction);
 
 timedExpensiveFunction(1000);
-
 timedExpensiveFunction(500000000);
