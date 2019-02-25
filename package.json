@@ -1,0 +1,33 @@
+{
+  "name": "fp-talk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "HOF.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/conditmatt/fp-talk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/conditmatt/fp-talk/issues"
+  },
+  "homepage": "https://github.com/conditmatt/fp-talk#readme",
+  "dependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint-config-react-app": "^3.0.7",
+    "eslint-plugin-flowtype": "^3.4.2",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
+    "ramda": "^0.26.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.14.1",
+    "eslint-config-humanyze": "^1.0.3"
+  }
+}
