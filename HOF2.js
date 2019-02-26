@@ -1,4 +1,4 @@
-const defaultErrorCatcher = ({ error, }) => console.error(error);
+const defaultErrorCatcher = ({ error, }) => console.error(error.message);
 
 const withTryCatch = (fn) => (catchFn = defaultErrorCatcher) => (...args) => {
   try {
@@ -7,8 +7,7 @@ const withTryCatch = (fn) => (catchFn = defaultErrorCatcher) => (...args) => {
     // catchFn(e, args) ?
     // catchFn(args, e) ?
     // catchFn(e, ...args) ?
-    console.error('attempting to catch?');
-    catchFn({ error: e, fn, catchFn, args, });  // best to follow named prop, monadic APIS
+    return catchFn({ error: e, fn, catchFn, args, });  // best to follow named prop, monadic APIS
   }
 };
 
@@ -35,16 +34,14 @@ const retryCatcher = ({
   error,
   args,
   retries = 0,
-  maxRetries = 1,
+  maxRetries = 2,
 }) => {
-  console.warn(error, args, retries);
-  if (retries >= maxRetries) return retries;
+  if (retries >= maxRetries) return error.message;
   try {
     return fn(...args);
   }
   catch (error) {
-    console.warn('was caught');
-    catchFn({ error, retries: retries + 1, });
+    return catchFn({ catchFn, fn, args, maxRetries, error, retries: retries + 1, });
   }
 };
 
