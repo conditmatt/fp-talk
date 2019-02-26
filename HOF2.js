@@ -27,6 +27,7 @@ const randomErrorFunction = () => {
 
 // using default error catcher
 const safeErrorFunction = withTryCatch(randomErrorFunction)();
+console.warn(safeErrorFunction());
 
 const retryCatcher = ({
   fn,
